@@ -599,7 +599,7 @@ body::before {
     background: linear-gradient(45deg, #ff6b9d, #f8b500);
     color: white;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -614,13 +614,6 @@ body::before {
     opacity: 0.5;
     cursor: not-allowed;
 }
-
-/* ====== ajuste só para telas pequenas ====== */
-@media (max-width: 600px) {
-  .checkout-btn {
-    position: relative;
-    bottom: 40px; /* sobe 40px em relação ao lugar original */
-  }
 }
 
 
