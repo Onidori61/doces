@@ -618,12 +618,11 @@ body::before {
 /* ====== ajuste só para telas pequenas ====== */
 @media (max-width: 600px) {
   .checkout-btn {
-    height: 40px  
-    width: 80%;        /* ocupa quase toda a tela */
-    margin: 20px auto; /* centraliza */
-    display: block;
+    position: relative;
+    bottom: 40px; /* sobe 40px em relação ao lugar original */
   }
 }
+
 
 
 /* Overlay do Carrinho */
