@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✦ Admin - Doces da Escola ✦</title>
+    <link rel="stylesheet" href="admin-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">✦ Painel Admin ✦</h1>
+            <p class="subtitle">Gerencie seus docinhos com carinho</p>
+        </header>
+
+        <!-- Tela de Login -->
+        <div id="loginScreen" class="login-screen">
+            <div class="login-card">
+                <div class="login-icon">🍭</div>
+                <h2>Acesso Restrito</h2>
+                <p>Digite a senha para continuar</p>
+                <div class="input-group">
+                    <input type="password" id="passwordInput" placeholder="Senha secreta..." maxlength="10">
+                    <button id="loginBtn" class="btn-primary">Entrar ✦</button>
+                </div>
+                <div id="loginError" class="error-message"></div>
+            </div>
+        </div>
+
+        <!-- Painel Principal -->
+        <div id="adminPanel" class="admin-panel hidden">
+            <nav class="nav-tabs">
+                <button class="tab-btn active" data-tab="list">📋 Lista de Doces</button>
+                <button class="tab-btn" data-tab="add">➕ Adicionar Doce</button>
+                <button class="logout-btn" id="logoutBtn">🚪 Sair</button>
+            </nav>
+
+            <!-- Aba Lista de Doces -->
+            <div id="listTab" class="tab-content active">
+                <div class="section-header">
+                    <h3>🍬 Seus Doces Cadastrados</h3>
+                    <div class="stats">
+                        <span class="stat-item">Total: <span id="totalDoces">0</span></span>
+                    </div>
+                </div>
+                <div id="docesList" class="doces-grid">
+                    <!-- Doces serão carregados aqui -->
+                </div>
+            </div>
+
+            <!-- Aba Adicionar Doce -->
+            <div id="addTab" class="tab-content">
+                <div class="section-header">
+                    <h3>🧁 Adicionar Novo Doce</h3>
+                </div>
+                <form id="doceForm" class="doce-form">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="nomeDoce">Nome do Doce ✦</label>
+                            <input type="text" id="nomeDoce" required placeholder="Ex: Brigadeiro Gourmet">
+                        </div>
+                        <div class="input-group">
+                            <label for="precoDoce">Preço (R$) ✦</label>
+                            <input type="number" id="precoDoce" step="0.01" min="0" required placeholder="0.00">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="descricaoDoce">Descrição</label>
+                        <textarea id="descricaoDoce" placeholder="Descreva seu docinho..."></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="imagemUrl">URL da Imagem (opcional)</label>
+                        <input type="url" id="imagemUrl" placeholder="https://exemplo.com/imagem.jpg">
+                        <small>Cole o link de uma imagem da internet ou deixe em branco</small>
+                        <div id="imagePreview" class="image-preview hidden">
+                            <img id="previewImg" src="" alt="Preview">
+                            <button type="button" id="removeImage" class="remove-btn">❌</button>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Opções de Retirada ✦</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="trocaAula" value="troca">
+                                <span class="checkmark"></span>
+                                🔄 Troca de Aula (2°A)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="intervalo" value="intervalo">
+                                <span class="checkmark"></span>
+                                ⏰ Intervalo (Recreio)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Status do Produto</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="esgotado" value="esgotado">
+                                <span class="checkmark"></span>
+                                🚫 Produto Esgotado
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="cancelBtn" class="btn-secondary">Cancelar</button>
+                        <button type="submit" id="saveBtn" class="btn-primary">
+                            <span class="btn-text">Salvar Doce ✦</span>
+                            <span class="btn-loading hidden">Salvando...</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay hidden">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Carregando...</p>
+            </div>
+        </div>
+
+        <!-- Modal de Confirmação -->
+        <div id="confirmModal" class="modal hidden">
+            <div class="modal-content">
+                <h3>Confirmar Ação</h3>
+                <p id="confirmMessage"></p>
+                <div class="modal-actions">
+                    <button id="confirmCancel" class="btn-secondary">Cancelar</button>
+                    <button id="confirmOk" class="btn-danger">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="admin-script.js"></script>
+</body>
+</html>
+

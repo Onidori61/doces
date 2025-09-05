@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✦ Doces da Escola ✦</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">✦ Doces da Escola ✦</h1>
+                <p class="subtitle">Os melhores docinhos feitos com amor</p>
+                <div class="header-info">
+                    <div class="info-item">
+                        <span class="icon">🔄</span>
+                        <span>Retirada na troca de aula (2°A)</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">⏰</span>
+                        <span>Retirada no intervalo (recreio)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-button" id="cartButton">
+                <span class="cart-icon">🛒</span>
+                <span class="cart-text">Carrinho</span>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </header>
+
+        <!-- Filtros -->
+        <div class="filters">
+            <div class="filter-group">
+                <label class="filter-label">Filtrar por retirada:</label>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Todos 🍭</button>
+                    <button class="filter-btn" data-filter="troca">Troca de Aula 🔄</button>
+                    <button class="filter-btn" data-filter="intervalo">Intervalo ⏰</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div id="loadingDoces" class="loading-section">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Carregando docinhos...</p>
+            </div>
+        </div>
+
+        <!-- Lista de Doces -->
+        <main class="main-content">
+            <div id="docesContainer" class="doces-container">
+                <!-- Doces serão carregados aqui -->
+            </div>
+            
+            <div id="emptyState" class="empty-state hidden">
+                <div class="empty-icon">🍭</div>
+                <h3>Nenhum doce encontrado</h3>
+                <p>Não há docinhos disponíveis no momento ou que correspondam ao filtro selecionado.</p>
+            </div>
+        </main>
+
+        <!-- Carrinho Lateral -->
+        <div id="cartSidebar" class="cart-sidebar">
+            <div class="cart-header">
+                <h3>🛒 Seu Carrinho</h3>
+                <button id="closeCart" class="close-btn">✕</button>
+            </div>
+            
+            <div class="cart-content">
+                <div id="cartItems" class="cart-items">
+                    <!-- Itens do carrinho serão adicionados aqui -->
+                </div>
+                
+                <div id="emptyCart" class="empty-cart">
+                    <div class="empty-cart-icon">🛒</div>
+                    <p>Seu carrinho está vazio</p>
+                    <small>Adicione alguns docinhos deliciosos!</small>
+                </div>
+            </div>
+            
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total: R$ <span id="cartTotal">0,00</span></span>
+                </div>
+                
+                <div class="delivery-options">
+                    <h4>Opção de Retirada:</h4>
+                    <div class="delivery-radio-group">
+                        <label class="delivery-option">
+                            <input type="radio" name="delivery" value="troca" id="deliveryTroca">
+                            <span class="radio-custom"></span>
+                            <span class="option-text">🔄 Troca de Aula (2°A)</span>
+                        </label>
+                        <label class="delivery-option">
+                            <input type="radio" name="delivery" value="intervalo" id="deliveryIntervalo">
+                            <span class="radio-custom"></span>
+                            <span class="option-text">⏰ Intervalo (Recreio)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button id="checkoutBtn" class="checkout-btn" disabled>
+                    <span class="btn-text">Fazer Pedido ✦</span>
+                    <span class="btn-loading hidden">Processando...</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Overlay do Carrinho -->
+        <div id="cartOverlay" class="cart-overlay"></div>
+
+        <!-- Modal de Confirmação -->
+        <div id="confirmModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Confirmar Pedido</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Você será redirecionado para o WhatsApp com os detalhes do seu pedido.</p>
+                    <div id="orderSummary" class="order-summary">
+                        <!-- Resumo do pedido será inserido aqui -->
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button id="modalCancel" class="btn-secondary">Cancelar</button>
+                    <button id="modalConfirm" class="btn-primary">Confirmar Pedido</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overlay do Modal -->
+        <div id="modalOverlay" class="modal-overlay"></div>
+
+        <!-- Notificações -->
+        <div id="notifications" class="notifications"></div>
+
+        <!-- Link para Admin -->
+        <div class="admin-link">
+            <a href="admin.html" class="admin-btn">👑 Área Admin</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+

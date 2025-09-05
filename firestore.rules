@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Permitir leitura de doces para todos
+    match /doces/{docId} {
+      allow read: if true;
+      allow write: if true; // Para simplicidade, permitindo escrita para todos
+                           // Em produção, você deveria implementar autenticação adequada
+    }
+    
+    // Permitir leitura e escrita de pedidos
+    match /pedidos/{docId} {
+      allow read, write: if true;
+    }
+  }
+}
+
