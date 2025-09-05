@@ -509,10 +509,18 @@ body::before {
 }
 
 .cart-footer {
-    padding: 25px;
-    border-top: 2px solid rgba(255, 182, 193, 0.2);
-    background: rgba(255, 255, 255, 0.8);
+  padding: 25px;
+  border-top: 2px solid rgba(255, 182, 193, 0.2);
+  background: rgba(255, 255, 255, 0.8);
 }
+
+/* ajustes só pro mobile */
+@media (max-width: 768px) {
+  .cart-footer {
+    padding-bottom: 60px;
+  }
+}
+
 
 .cart-total {
     font-size: 1.3rem;
