@@ -510,11 +510,9 @@ body::before {
 
 .cart-footer {
     padding: 25px;
-    padding-bottom: 50px; /* dá mais espaço pra aparecer o botão */
     border-top: 2px solid rgba(255, 182, 193, 0.2);
     background: rgba(255, 255, 255, 0.8);
 }
-
 
 .cart-total {
     font-size: 1.3rem;
@@ -601,7 +599,7 @@ body::before {
     background: linear-gradient(45deg, #ff6b9d, #f8b500);
     color: white;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -616,8 +614,15 @@ body::before {
     opacity: 0.5;
     cursor: not-allowed;
 }
-}
 
+/* ====== ajuste só para telas pequenas ====== */
+@media (max-width: 600px) {
+  .checkout-btn {
+    width: 70%;        /* ocupa quase toda a tela */
+    margin: 20px auto; /* centraliza */
+    display: block;
+  }
+}
 
 
 /* Overlay do Carrinho */
@@ -948,4 +953,3 @@ body::before {
     opacity: 1;
     background: rgba(231, 76, 60, 0.1);
 }
-
