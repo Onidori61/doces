@@ -438,10 +438,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Prevenir scroll do body quando carrinho estiver aberto
-cartSidebar.addEventListener('scroll', (e) => {
-    e.stopPropagation();
-});
 
 console.log('Sistema de doces carregado com sucesso!');
 
