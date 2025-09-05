@@ -11,15 +11,16 @@ import {
     onSnapshot 
 } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-// Configuração do Firebase (substitua pelos seus dados)
+// Sua configuração do Firebase para o aplicativo web
 const firebaseConfig = {
-    apiKey: "SUA_API_KEY_AQUI",
-    authDomain: "seu-projeto.firebaseapp.com",
-    projectId: "seu-projeto",
-    storageBucket: "seu-projeto.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "1:123456789:web:abcdef123456"
+  apiKey: "AIzaSyBal20gWy_05t2d5Bsw1s8I8a3T7aOtwkI",
+  authDomain: "doces-e393e.firebaseapp.com",
+  projectId: "doces-e393e", // <<< ESTE DEVE SER O CORRETO!
+  storageBucket: "doces-e393e.firebasestorage.app",
+  messagingSenderId: "167548871841",
+  appId: "1:167548871841:web:b45a5be4439993adcc7ce0"
 };
+
 
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
