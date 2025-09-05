@@ -618,7 +618,7 @@ body::before {
 /* ====== ajuste só para telas pequenas ====== */
 @media (max-width: 600px) {
   .checkout-btn {
-    width: 90%;        /* ocupa quase toda a tela */
+    width: 70%;        /* ocupa quase toda a tela */
     margin: 20px auto; /* centraliza */
     display: block;
   }
