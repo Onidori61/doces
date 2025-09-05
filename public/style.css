@@ -510,9 +510,11 @@ body::before {
 
 .cart-footer {
     padding: 25px;
+    padding-bottom: 50px; /* dá mais espaço pra aparecer o botão */
     border-top: 2px solid rgba(255, 182, 193, 0.2);
     background: rgba(255, 255, 255, 0.8);
 }
+
 
 .cart-total {
     font-size: 1.3rem;
