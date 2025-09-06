@@ -28,7 +28,7 @@ let cart = [];
 let currentFilter = 'all';
 
 // Número do WhatsApp (substitua pelo seu número)
-const WHATSAPP_NUMBER = '5511999999999'; // Formato: 55 + DDD + número
+const WHATSAPP_NUMBER = '5511987511209'; // Formato: 55 + DDD + número
 
 // Elementos DOM
 const loadingDoces = document.getElementById('loadingDoces');
