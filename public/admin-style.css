@@ -739,3 +739,28 @@ textarea {
     background: rgba(231, 76, 60, 0.1);
 }
 
+
+
+/* Estilos para ícones de imagem no Admin */
+.login-icon-img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    animation: bounce 2s infinite;
+}
+
+.admin-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    margin-right: 8px;
+}
+
+.option-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    margin-right: 6px;
+}
+
+

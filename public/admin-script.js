@@ -58,6 +58,7 @@ const previewImg = document.getElementById('previewImg');
 const removeImage = document.getElementById('removeImage');
 const trocaAula = document.getElementById('trocaAula');
 const intervalo = document.getElementById('intervalo');
+const saida = document.getElementById('saida');
 const esgotado = document.getElementById('esgotado');
 const saveBtn = document.getElementById('saveBtn');
 const cancelBtn = document.getElementById('cancelBtn');
@@ -188,9 +189,8 @@ async function handleSaveDoce(e) {
         return;
     }
     
-    if (!trocaAula.checked && !intervalo.checked) {
+    if (!trocaAula.checked && !intervalo.checked && !saida.checked) {
         alert('Selecione pelo menos uma opção de retirada!');
-        return;
     }
     
     showLoading(true);
@@ -210,7 +210,7 @@ async function handleSaveDoce(e) {
         
         if (trocaAula.checked) doceData.opcoes.push('troca');
         if (intervalo.checked) doceData.opcoes.push('intervalo');
-        
+        if (saida.checked) doceData.opcoes.push('saida');       
         if (currentEditId) {
             // Atualizar doce existente
             await updateDoc(doc(db, 'doces', currentEditId), doceData);
@@ -290,8 +290,9 @@ function renderDoces() {
                 <div class="doce-price">R$ ${doce.preco.toFixed(2)}</div>
                 ${doce.descricao ? `<div class="doce-description">${doce.descricao}</div>` : ''}
                 <div class="doce-options">
-                    ${doce.opcoes && doce.opcoes.includes('troca') ? '<span class="option-tag">🔄 Troca de Aula</span>' : ''}
-                    ${doce.opcoes && doce.opcoes.includes('intervalo') ? '<span class="option-tag">⏰ Intervalo</span>' : ''}
+                    ${doce.opcoes && doce.opcoes.includes('troca') ? '<span class="option-tag"><img src="1.png" alt="Troca de Aula" class="option-icon"> Troca de Aula</span>' : ''}
+                    ${doce.opcoes && doce.opcoes.includes('intervalo') ? '<span class="option-tag"><img src="intervalo.png" alt="Intervalo" class="option-icon"> Intervalo</span>' : ''}
+                    ${doce.opcoes && doce.opcoes.includes('saida') ? '<span class="option-tag"><img src="saida.png" alt="Na Saída" class="option-icon"> Na Saída</span>' : ''}
                 </div>
                 <div class="doce-actions">
                     <button class="btn-edit" onclick="editDoce('${doce.id}')">✏️ Editar</button>
@@ -320,6 +321,7 @@ window.editDoce = function(id) {
     imagemUrl.value = doce.imageUrl || '';
     trocaAula.checked = doce.opcoes && doce.opcoes.includes('troca');
     intervalo.checked = doce.opcoes && doce.opcoes.includes('intervalo');
+    saida.checked = doce.opcoes && doce.opcoes.includes('saida');
     esgotado.checked = doce.esgotado || false;
     
     // Mostrar imagem se houver

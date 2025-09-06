@@ -13,24 +13,34 @@
         <header class="header">
             <div class="header-content">
                 <h1 class="title">✦ Doces ✦</h1>
-                <p class="subtitle">OCompre e agende de form fácil</p>
+                <p class="subtitle"> compre e agende de forma fácil</p>
                 <div class="header-info">
                     <div class="info-item">
-                        <span class="icon">🔄</span>
+                        <img src="1.png" alt="Troca de Aula" class="icon-img">
                         <span>Retirada na troca de aula (2°A)</span>
                     </div>
                     <div class="info-item">
-                        <span class="icon">⏰</span>
+                        <img src="intervalo.png" alt="Intervalo" class="icon-img">
                         <span>Retirada no intervalo (recreio)</span>
+                    </div>
+                    <div class="info-item">
+                        <img src="saida.png" alt="Na Saída" class="icon-img">
+                        <span>Retirada na saída</span>
                     </div>
                 </div>
             </div>
             <div class="cart-button" id="cartButton">
-                <span class="cart-icon">🛒</span>
+                <img src="cesta.png" alt="Carrinho" class="cart-icon-img">
                 <span class="cart-text">Carrinho</span>
                 <span class="cart-count" id="cartCount">0</span>
             </div>
         </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Rápido e fácil, faça seu pedido</h1>
+            <p>Os melhores sabores para você!</p>
+        </section>
 
         <!-- Filtros -->
         <div class="filters">
@@ -40,6 +50,7 @@
                     <button class="filter-btn active" data-filter="all">Todos </button>
                     <button class="filter-btn" data-filter="troca">Troca de Aula </button>
                     <button class="filter-btn" data-filter="intervalo">Intervalo </button>
+                    <button class="filter-btn" data-filter="saida">Na Saída </button>
                 </div>
             </div>
         </div>
@@ -59,7 +70,7 @@
             </div>
             
             <div id="emptyState" class="empty-state hidden">
-                <div class="empty-icon">🍭</div>
+                <div class="empty-icon"><img src="1.png" alt="Nenhum doce" class="empty-icon-img"></div>
                 <h3>Nenhum doce encontrado</h3>
                 <p>Não há produto disponíveis no momento ou que correspondam ao filtro selecionado.</p>
             </div>
@@ -68,7 +79,7 @@
         <!-- Carrinho Lateral -->
         <div id="cartSidebar" class="cart-sidebar">
             <div class="cart-header">
-                <h3>🛒 Seu Carrinho</h3>
+                <h3><img src="cesta.png" alt="Carrinho" class="cart-header-icon"> Seu Carrinho</h3>
                 <button id="closeCart" class="close-btn">✕</button>
             </div>
             
@@ -78,7 +89,7 @@
                 </div>
                 
                 <div id="emptyCart" class="empty-cart">
-                    <div class="empty-cart-icon">🛒</div>
+                    <div class="empty-cart-icon"><img src="cesta.png" alt="Carrinho Vazio" class="empty-cart-img"></div>
                     <p>Seu carrinho está vazio</p>
                     <small>Adicione alguns produtos!</small>
                 </div>
@@ -95,12 +106,20 @@
                         <label class="delivery-option">
                             <input type="radio" name="delivery" value="troca" id="deliveryTroca">
                             <span class="radio-custom"></span>
-                            <span class="option-text">🔄 Troca de Aula (2°A)</span>
+                            <img src="1.png" alt="Troca de Aula" class="delivery-icon">
+                            <span class="option-text">Troca de Aula (2°A)</span>
                         </label>
                         <label class="delivery-option">
                             <input type="radio" name="delivery" value="intervalo" id="deliveryIntervalo">
                             <span class="radio-custom"></span>
-                            <span class="option-text">⏰ Intervalo (Recreio)</span>
+                            <img src="intervalo.png" alt="Intervalo" class="delivery-icon">
+                            <span class="option-text">Intervalo (Recreio)</span>
+                        </label>
+                        <label class="delivery-option">
+                            <input type="radio" name="delivery" value="saida" id="deliverySaida">
+                            <span class="radio-custom"></span>
+                            <img src="saida.png" alt="Na Saída" class="delivery-icon">
+                            <span class="option-text">Na Saída</span>
                         </label>
                     </div>
                 </div>
@@ -145,6 +164,11 @@
             <a href="admin.html" class="admin-btn">👑</a>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; Feito por K2A.</p>
+    </footer>
 
     <!-- Scripts -->
     <script type="module" src="script.js"></script>

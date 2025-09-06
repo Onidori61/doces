@@ -45,6 +45,7 @@ const cartTotal = document.getElementById('cartTotal');
 const checkoutBtn = document.getElementById('checkoutBtn');
 const deliveryTroca = document.getElementById('deliveryTroca');
 const deliveryIntervalo = document.getElementById('deliveryIntervalo');
+const deliverySaida = document.getElementById('deliverySaida');
 const confirmModal = document.getElementById('confirmModal');
 const modalOverlay = document.getElementById('modalOverlay');
 const modalCancel = document.getElementById('modalCancel');
@@ -73,8 +74,7 @@ filterBtns.forEach(btn => {
 // Opções de entrega
 deliveryTroca.addEventListener('change', updateCheckoutButton);
 deliveryIntervalo.addEventListener('change', updateCheckoutButton);
-
-// Inicializar aplicação
+deliverySaida.addEventListener('change', updateCheckoutButton);// Inicializar aplicação
 document.addEventListener('DOMContentLoaded', () => {
     loadDoces();
     loadCartFromStorage();
@@ -142,12 +142,14 @@ function renderDoces() {
                 ${doce.descricao ? `<div class="doce-description">${doce.descricao}</div>` : ''}
                 <div class="doce-options">
                     ${doce.opcoes && doce.opcoes.includes('troca') ? 
-                        '<span class="option-tag">🔄 Troca de Aula</span>' : ''}
+                        '<span class="option-tag"><img src="1.png" alt="Troca de Aula" class="option-icon"> Troca de Aula</span>' : ''}
                     ${doce.opcoes && doce.opcoes.includes('intervalo') ? 
-                        '<span class="option-tag">⏰ Intervalo</span>' : ''}
+                        '<span class="option-tag"><img src="intervalo.png" alt="Intervalo" class="option-icon"> Intervalo</span>' : ''}
+                    ${doce.opcoes && doce.opcoes.includes('saida') ? 
+                        '<span class="option-tag"><img src="saida.png" alt="Na Saída" class="option-icon"> Na Saída</span>' : ''}
                 </div>
                 <button class="add-to-cart-btn" onclick="addToCart('${doce.id}')">
-                    Adicionar ao Carrinho 🛒
+                    <img src="cesta.png" alt="Adicionar" class="btn-icon"> Adicionar ao Carrinho
                 </button>
             </div>
         </div>
@@ -280,7 +282,7 @@ function updateCartDisplay() {
 
 function updateCheckoutButton() {
     const hasItems = cart.length > 0;
-    const hasDeliveryOption = deliveryTroca.checked || deliveryIntervalo.checked;
+    const hasDeliveryOption = deliveryTroca.checked || deliveryIntervalo.checked || deliverySaida.checked;
     
     checkoutBtn.disabled = !hasItems || !hasDeliveryOption;
 }
@@ -303,12 +305,19 @@ function showCheckoutModal() {
     if (cart.length === 0) return;
     
     // Gerar resumo do pedido
-    const deliveryOption = deliveryTroca.checked ? 'Troca de Aula (2°A)' : 'Intervalo (Recreio)';
+    let deliveryOption = '';
+    if (deliveryTroca.checked) {
+        deliveryOption = 'Troca de Aula (2°A)';
+    } else if (deliveryIntervalo.checked) {
+        deliveryOption = 'Intervalo (Recreio)';
+    } else if (deliverySaida.checked) {
+        deliveryOption = 'Na Saída';
+    }
     const total = cart.reduce((sum, item) => sum + (item.preco * item.quantity), 0);
     
     orderSummary.innerHTML = `
         <div class="summary-section">
-            <h4 style="color: #8e44ad; margin-bottom: 15px;">📋 Itens do Pedido:</h4>
+            <h4 style="color: #8e44ad; margin-bottom: 15px;"><img src="1.png" alt="Lista" class="summary-icon"> Itens do Pedido:</h4>
             ${cart.map(item => `
                 <div class="summary-item">
                     <span>${item.quantity}x ${item.nome}</span>
@@ -321,7 +330,7 @@ function showCheckoutModal() {
             </div>
         </div>
         <div class="summary-section" style="margin-top: 20px;">
-            <h4 style="color: #8e44ad; margin-bottom: 10px;">📍 Retirada:</h4>
+            <h4 style="color: #8e44ad; margin-bottom: 10px;"><img src="saida.png" alt="Localização" class="summary-icon"> Retirada:</h4>
             <p style="background: rgba(255, 182, 193, 0.2); padding: 10px; border-radius: 10px; margin: 0;">
                 ${deliveryOption}
             </p>
@@ -345,7 +354,14 @@ function processOrder() {
     if (cart.length === 0) return;
     
     // Preparar mensagem do WhatsApp
-    const deliveryOption = deliveryTroca.checked ? 'Troca de Aula (2°A)' : 'Intervalo (Recreio)';
+    let deliveryOption = '';
+    if (deliveryTroca.checked) {
+        deliveryOption = 'Troca de Aula (2°A)';
+    } else if (deliveryIntervalo.checked) {
+        deliveryOption = 'Intervalo (Recreio)';
+    } else if (deliverySaida.checked) {
+        deliveryOption = 'Na Saída';
+    }
     const total = cart.reduce((sum, item) => sum + (item.preco * item.quantity), 0);
     
     let message = `*🍭 PEDIDO DE DOCES 🍭*\n\n`;
