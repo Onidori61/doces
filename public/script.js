@@ -364,7 +364,7 @@ function processOrder() {
     }
     const total = cart.reduce((sum, item) => sum + (item.preco * item.quantity), 0);
     
-    let message = `*🍭 PEDIDO DE DOCES 🍭*\n\n`;
+    let message = `*Pedidos:*\n\n`;
     message += `*📋 Itens:*\n`;
     
     cart.forEach(item => {
@@ -373,7 +373,7 @@ function processOrder() {
     
     message += `\n*💰 Total: R$ ${total.toFixed(2)}*\n\n`;
     message += `*📍 Retirada:* ${deliveryOption}\n\n`;
-    message += `_Pedido feito através do site dos Doces da Escola_ ✦`;
+    message += `Tudo prontinho`;
     
     // Codificar mensagem para URL
     const encodedMessage = encodeURIComponent(message);
