@@ -1,177 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✦ Doces da Escola ✦</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Descontinuado</title>
+  <style>
+    /* Estilo propositalmente simples/feioso — combinação de cores e fontes básicas */
+    :root{
+      --bg:#f3f3f3;
+      --panel:#fff;
+      --accent:#d9534f;
+      --muted:#666;
+    }
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+    body{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,var(--bg),#e9e9e9);
+    }
+    .card{
+      background:var(--panel);
+      border:2px solid rgba(0,0,0,0.06);
+      padding:36px;
+      width:min(880px,92%);
+      box-shadow:0 8px 30px rgba(0,0,0,0.06);
+      text-align:center;
+      border-radius:8px;
+    }
+    .badge{
+      display:inline-block;
+      padding:6px 12px;
+      background:var(--accent);
+      color:white;
+      font-weight:700;
+      border-radius:999px;
+      margin-bottom:18px;
+      letter-spacing:0.6px;
+      font-size:13px;
+    }
+    h1{
+      margin:0 0 12px;
+      font-size:20px;
+    }
+    p{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+    }
+    /* Um toque pro “feio intencional” com uma fonte monoespaçada pequena */
+    .note{
+      margin-top:14px;
+      font-family: "Courier New",Courier,monospace;
+      font-size:13px;
+      color:#999;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-content">
-                <h1 class="title">Lolja</h1>
-                <p class="subtitle"> compre e agende de forma fácil</p>
-                <div class="header-info">
-                    <div class="info-item">
-                        <img src="1.png" alt="Troca de Aula" class="icon-img">
-                        <span>Retirada na troca de aula (2°A)</span>
-                    </div>
-                    <div class="info-item">
-                        <img src="intervalo.png" alt="Intervalo" class="icon-img">
-                        <span>Retirada no intervalo (recreio)</span>
-                    </div>
-                    <div class="info-item">
-                        <img src="saida.png" alt="Na Saída" class="icon-img">
-                        <span>Retirada na saída</span>
-                    </div>
-                </div>
-            </div>
-            <div class="cart-button" id="cartButton">
-                <img src="cesta.png" alt="Carrinho" class="cart-icon-img">
-                <span class="cart-text">Carrinho</span>
-                <span class="cart-count" id="cartCount">0</span>
-            </div>
-        </header>
-
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1>Rápido e fácil, faça seu pedido</h1>
-            <p>Os melhores sabores para você!</p>
-        </section>
-
-        <!-- Filtros -->
-        <div class="filters">
-            <div class="filter-group">
-                <label class="filter-label">Filtrar por retirada:</label>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">Todos </button>
-                    <button class="filter-btn" data-filter="troca">Troca de Aula </button>
-                    <button class="filter-btn" data-filter="intervalo">Intervalo </button>
-                    <button class="filter-btn" data-filter="saida">Na Saída </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Loading -->
-        <div id="loadingDoces" class="loading-section">
-            <div class="loading-spinner">
-                <div class="spinner"></div>
-                <p>Carregando...</p>
-            </div>
-        </div>
-
-        <!-- Lista de Doces -->
-        <main class="main-content">
-            <div id="docesContainer" class="doces-container">
-                <!-- Doces serão carregados aqui -->
-            </div>
-            
-            <div id="emptyState" class="empty-state hidden">
-                <div class="empty-icon"><img src="1.png" alt="Nenhum doce" class="empty-icon-img"></div>
-                <h3>Nenhum doce encontrado</h3>
-                <p>Não há produto disponíveis no momento ou que correspondam ao filtro selecionado.</p>
-            </div>
-        </main>
-
-        <!-- Carrinho Lateral -->
-        <div id="cartSidebar" class="cart-sidebar">
-            <div class="cart-header">
-                <h3><img src="cesta.png" alt="Carrinho" class="cart-header-icon"> Seu Carrinho</h3>
-                <button id="closeCart" class="close-btn">✕</button>
-            </div>
-            
-            <div class="cart-content">
-                <div id="cartItems" class="cart-items">
-                    <!-- Itens do carrinho serão adicionados aqui -->
-                </div>
-                
-                <div id="emptyCart" class="empty-cart">
-                    <div class="empty-cart-icon"><img src="cesta.png" alt="Carrinho Vazio" class="empty-cart-img"></div>
-                    <p>Seu carrinho está vazio</p>
-                    <small>Adicione alguns produtos!</small>
-                </div>
-            </div>
-            
-            <div class="cart-footer">
-                <div class="cart-total">
-                    <span>Total: R$ <span id="cartTotal">0,00</span></span>
-                </div>
-                
-                <div class="delivery-options">
-                    <h4>Opção de Retirada:</h4>
-                    <div class="delivery-radio-group">
-                        <label class="delivery-option">
-                            <input type="radio" name="delivery" value="troca" id="deliveryTroca">
-                            <span class="radio-custom"></span>
-                            <img src="1.png" alt="Troca de Aula" class="delivery-icon">
-                            <span class="option-text">Troca de Aula (2°A)</span>
-                        </label>
-                        <label class="delivery-option">
-                            <input type="radio" name="delivery" value="intervalo" id="deliveryIntervalo">
-                            <span class="radio-custom"></span>
-                            <img src="intervalo.png" alt="Intervalo" class="delivery-icon">
-                            <span class="option-text">Intervalo (Recreio)</span>
-                        </label>
-                        <label class="delivery-option">
-                            <input type="radio" name="delivery" value="saida" id="deliverySaida">
-                            <span class="radio-custom"></span>
-                            <img src="saida.png" alt="Na Saída" class="delivery-icon">
-                            <span class="option-text">Na Saída</span>
-                        </label>
-                    </div>
-                </div>
-                
-                <button id="checkoutBtn" class="checkout-btn" disabled>
-                    <span class="btn-text">Fazer Pedido ✦</span>
-                    <span class="btn-loading hidden">Processando...</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Overlay do Carrinho -->
-        <div id="cartOverlay" class="cart-overlay"></div>
-
-        <!-- Modal de Confirmação -->
-        <div id="confirmModal" class="modal hidden">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Confirmar Pedido</h3>
-                </div>
-                <div class="modal-body">
-                    <p>Você será redirecionado para o WhatsApp com os detalhes do seu pedido.</p>
-                    <div id="orderSummary" class="order-summary">
-                        <!-- Resumo do pedido será inserido aqui -->
-                    </div>
-                </div>
-                <div class="modal-actions">
-                    <button id="modalCancel" class="btn-secondary">Cancelar</button>
-                    <button id="modalConfirm" class="btn-primary">Confirmar Pedido</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Overlay do Modal -->
-        <div id="modalOverlay" class="modal-overlay"></div>
-
-        <!-- Notificações -->
-        <div id="notifications" class="notifications"></div>
-
-        <!-- Link para Admin -->
-        <div class="admin-link">
-            <a href="admin.html" class="admin-btn">👑</a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; Feito por K2A.</p>
-    </footer>
-
-    <!-- Scripts -->
-    <script type="module" src="script.js"></script>
+  <main class="card" role="main" aria-labelledby="titulo">
+    <div class="badge">DESCONTINUADO</div>
+    <h1 id="titulo">descontinuado, design tava muito feio (mesmo sendo algo que eu fiz em 1 hora)</h1>
+    <p class="note">— feito rápido, sem frescura.</p>
+  </main>
 </body>
 </html>
-
